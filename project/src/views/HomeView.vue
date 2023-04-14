@@ -1,4 +1,6 @@
 <template>
+<div>
+  <MainNavbar />
   <b-carousel>
     <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
       <section :class="`hero is-medium is-${carousel.color}`">
@@ -8,11 +10,16 @@
       </section>
     </b-carousel-item>
   </b-carousel>
+</div>
 </template>
 
 <script>
+import MainNavbar from "../components/MainNavbar.vue";
 export default {
   name: "HomeView",
+  components: {
+    MainNavbar,
+  },
   data() {
     return {
       carousels: [
