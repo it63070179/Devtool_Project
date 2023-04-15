@@ -8,7 +8,7 @@ export default {};
 </script>
 <style>
 body {
-  background: #F7F9FB;
+  background: #F8EEE7;
   font-family: "Itim", cursive;
   width: 100vw;
   min-height: 100vh;
