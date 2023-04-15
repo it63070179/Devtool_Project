@@ -1,122 +1,46 @@
 <template>
-  <div class="carousel">
-    <div class="carousel-container">
-      <div class="carousel-item" v-for="(slide, index) in slides" :key="index">
-        <img :src="slide.image" :alt="slide.caption" />
-        <div class="carousel-caption">{{ slide.caption }}</div>
-      </div>
-    </div>
-    <div class="carousel-navigation">
-      <div class="carousel-nav-left" @click="prevSlide">
-        <i class="fas fa-chevron-left"></i>
-      </div>
-      <div class="carousel-nav-right" @click="nextSlide">
-        <i class="fas fa-chevron-right"></i>
-      </div>
-    </div>
+  <div>
+    <NavBar />
+    <Carousel :autoplay="2000" :wrap-around="true">
+      <Slide v-for="(slide, index) in slides" :key="index">
+        <div class="carousel__item">
+          <img :src="slide.image" />
+        </div>
+      </Slide>
+
+      <template #addons>
+        <Pagination />
+      </template>
+    </Carousel>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import { onMounted, reactive } from "vue";
-import bulmaCarousel from 'bulma-carousel';
+import { Carousel, Pagination, Slide } from "vue3-carousel";
+import  NavBar  from "@/components/NavBar";
+
+import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
-  name: "HomeView",
-//   components: {
-//     NavBar,
-//     MyCarosel,
-//   },
-  props: {
-    slides: {
-      type: Array,
-      required: true,
-    },
-    autoplay: {
-      type: Boolean,
-      default: true,
-    },
-    autoplaySpeed: {
-      type: Number,
-      default: 4000,
-    },
+  name: "HomePage",
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    NavBar,
   },
-  setup(props) {
-    const state = reactive({
-      carousel: null,
-    });
-
-    const prevSlide = () => {
-      state.carousel.prev();
-    };
-
-    const nextSlide = () => {
-      state.carousel.next();
-    };
-
-    onMounted(() => {
-      state.carousel = bulmaCarousel.attach(".carousel", {
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        loop: true,
-        autoplay: props.autoplay,
-        autoplaySpeed: props.autoplaySpeed,
-      })[0];
-    });
-
+  data() {
     return {
-      prevSlide,
-      nextSlide,
+      slides: [
+        {
+          image: require("../assets/logo.png"),
+        },
+        {
+          image: require("../assets/logo.png"),
+        },
+      ],
     };
   },
 });
 </script>
-
-<style scoped>
-.carousel {
-  position: relative;
-  margin: 0 auto;
-}
-
-.carousel-item {
-  position: relative;
-  overflow: hidden;
-}
-img {
-  display: block;
-  width: 100%;
-}
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-}
-
-.carousel-navigation {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 1;
-}
-.carousel-nav-left,
-.carousel-nav-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  cursor: pointer;
-}
-.carousel-nav-left {
-  left: 0;
-}
-.carousel-nav-right {
-  right: 0;
-}
-</style>
