@@ -1,16 +1,41 @@
 <template>
   <div>
     <NavBar />
-    <div class="login-page">
-      <div class="card">
-        <form @submit.prevent="login">
-          <div class="title">Login</div>
-          <input placeholder="Username" type="text" v-model="username" />
-          <br />
-          <input placeholder="Password" type="password" v-model="password" />
-          <br />
-          <button type="submit">Login</button>
-        </form>
+    <div id="modal-card" class="modal modal-fx-3dSlit is-active">
+      <div class="modal-background"></div>
+      <div class="modal-content is-tiny">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <form
+                @submit.prevent="login"
+                style="
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                  padding: auto;
+                "
+              >
+                <div class="title">Login</div>
+                <input
+                  placeholder="Username"
+                  class="button is-rounded"
+                  type="text"
+                  v-model="username"
+                />
+
+                <input
+                  class="button is-rounded mt-2"
+                  placeholder="Password"
+                  type="password"
+                  v-model="password"
+                />
+                <br />
+                <button type="submit">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -58,3 +83,18 @@ export default {
   },
 };
 </script>
+<style>
+#modal-card form {
+  padding: 2rem;
+  border-radius: 10px;
+}
+#modal-card button[type="submit"] {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+</style>
