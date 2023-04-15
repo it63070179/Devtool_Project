@@ -23,7 +23,7 @@
           <a class="navbar-item">
             <router-link to="/" style="color: #f7f9fb"> Home </router-link>
           </a>
-          <a class="navbar-item" v-if="isLoggedIn">
+          <a class="navbar-item">
             <router-link to="/ChatUser" style="color: #f7f9fb">
               chat</router-link
             >
