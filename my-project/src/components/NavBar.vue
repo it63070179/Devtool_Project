@@ -2,10 +2,9 @@
   <nav class="navbar is-primary">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item" href="#">
+        <a class="navbar-item">
           <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma" />
         </a>
-
         <a
           role="button"
           class="navbar-burger"
@@ -21,16 +20,35 @@
 
       <div class="navbar-menu" :class="{ 'is-active': isNavbarActive }">
         <div class="navbar-start">
-          <a class="navbar-item" href="#"> Home </a>
-          <a class="navbar-item" href="#"> About </a>
-          <a class="navbar-item" href="#"> Contact </a>
+          <a class="navbar-item">
+            <router-link to="/" style="color: #f7f9fb"> Home </router-link>
+          </a>
+          <a class="navbar-item" v-if="isLoggedIn">
+            <router-link to="/ChatUser" style="color: #f7f9fb">
+              chat</router-link
+            >
+          </a>
+          <a class="navbar-item"> About </a>
         </div>
 
         <div class="navbar-end">
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-light" href="#"> Log in </a>
-              <a class="button is-primary" href="#"> Sign up </a>
+              <router-link
+                v-show="!isLoggedIn"
+                to="/LoginUser"
+                style="color: #f7f9fb"
+              >
+                <a class="button is-light">Log in</a>
+              </router-link>
+              <a
+                class="button is-primary"
+                v-show="isLoggedIn"
+                href="#"
+                @click="logout"
+              >
+                Log out
+              </a>
             </div>
           </div>
         </div>
@@ -47,9 +65,19 @@ export default {
       isNavbarActive: false,
     };
   },
+  computed: {
+    isLoggedIn() {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      return userData !== null;
+    },
+  },
   methods: {
     toggleNavbar() {
       this.isNavbarActive = !this.isNavbarActive;
+    },
+    logout() {
+      localStorage.removeItem("user");
+      this.$router.push("/LoginUser");
     },
   },
 };
