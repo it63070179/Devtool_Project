@@ -28,7 +28,16 @@
               chat</router-link
             >
           </a>
-          <a class="navbar-item"> About </a>
+          <a class="navbar-item">
+            <router-link to="/NoteUser" style="color: #f7f9fb">
+              Note</router-link
+            >
+          </a>
+          <a class="navbar-item">
+            <router-link to="/PostUser" style="color: #f7f9fb">
+              Post</router-link
+            >
+          </a>
         </div>
 
         <div class="navbar-end">

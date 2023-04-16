@@ -3,6 +3,8 @@ import HomePage from "../views/HomePage.vue";
 import ChatUser from "../views/ChatUser"
 import LoginUser from "../views/LoginUser"
 import EventsContainer from "../views/EventsPage.vue"
+import PostUser from "../views/PostUser.vue";
+import NoteUser from "../views/NoteUser.vue";
 
 const routes = [
   {
@@ -28,6 +30,18 @@ const routes = [
     name: 'Events',
 
     component: EventsContainer
+  },
+  {
+    path: '/NoteUser',
+    name: 'NoteUser',
+
+    component: NoteUser
+  },
+  {
+    path: '/PostUser',
+    name: 'PostUser',
+
+    component: PostUser
   }
 ];
 
