@@ -1,4 +1,4 @@
 FROM nginx
-COPY index.html /usr/share/nginx/html/
+COPY App.vue /usr/share/nginx/Vue/
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
