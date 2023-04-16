@@ -8,6 +8,6 @@ services:
   #   image: kmitl63070010/my-backend_image:1.0
   frontend:
     build:
-      context: ./my-project
+      context: ./my-project/public
       dockerfile: Dockerfile
     image: kmitl63070010/my-frontend_image:1.0
