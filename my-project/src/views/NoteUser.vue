@@ -55,29 +55,34 @@
         </div>
         <br />
         <br />
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">Component</p>
-            <button class="card-header-icon" aria-label="more options">
-              <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
-              </span>
-            </button>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              nec iaculis mauris.
+        <div v-for="(value, index) in datenote" :key="index">
+          <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                {{ value.title }} &nbsp;<a href="#">#{{ value.warn }}</a>
+              </p>
+              <button class="card-header-icon" aria-label="m ore options">
+                <span class="icon">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                {{ value.desc }}
+                <br />
 
-              <a href="#">#responsive</a>
-              <br />
-              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                <time datetime="2016-1-1"
+                  >แจ้งเตือนเวลา : {{ value.date }}</time
+                >
+              </div>
             </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
           </div>
-          <footer class="card-footer">
-            <a href="#" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer>
+          <br />
         </div>
       </div>
     </div>
@@ -86,6 +91,7 @@
 
 <script>
 import NavBar from "@/components/NavBar";
+import axios from "axios";
 
 export default {
   name: "NoteUser",
@@ -96,10 +102,33 @@ export default {
       email: "",
       first_name: "",
       last_name: "",
+      datenote: "",
     };
   },
   components: {
     NavBar,
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    async fetchData() {
+      try {
+        axios
+          .get(
+            `https://u4wv7mpzwk.execute-api.us-east-1.amazonaws.com/Takecare/getdatanote`
+          )
+          .then((response) => {
+            this.datenote = response.data;
+            console.log(this.datanote);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>

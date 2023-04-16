@@ -4,7 +4,7 @@
     <Carousel :autoplay="2000" :wrap-around="true">
       <Slide v-for="(slide, index) in slides" :key="index">
         <div class="carousel__item">
-          <img :src="slide.image" />
+          <img :src="slide.image" style="width: 100%; height: 100%" />
         </div>
       </Slide>
 
@@ -20,40 +20,8 @@
         class="columns features"
         style="display: flex; justify-content: center; align-items: center"
       >
-        <div class="column is-4">
-          <router-link to="/Events">
-            <div class="card is-shady">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img
-                    src="../assets/schedule.jpg"
-                    class="modal-button"
-                    data-target="modal-image4"
-                  />
-                </figure>
-              </div>
-              <div
-                class="card-content modal-button"
-                data-target="modal-card2"
-                @click="toggleModal"
-              >
-                <div class="content">
-                  <h3 style="text-align: center; font-weight: bold">
-                    Schedule
-                  </h3>
-                  <h4>
-                    ตารางเรียนในแต่ละวิชาของเด็กๆ
-                    ผู้ปกครองสามารถคลิกเข้ามาดูรายละเอียดตารางเรียนแต่ละวิชาของเด็กๆได้ที่นี่
-                  </h4>
-                  <br />
-                </div>
-              </div>
-            </div>
-          </router-link>
-        </div>
-
         <div class="column is-4" data-target="modal-card">
-          <router-link to="/Events">
+          <router-link :to="`/Events/${'study'}`">
             <div class="card is-shady">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -83,7 +51,7 @@
         </div>
 
         <div class="column is-4">
-          <router-link to="/Events">
+          <router-link :to="`/Events/${'activity'}`">
             <div class="card is-shady">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -116,7 +84,7 @@
         </div>
 
         <div class="column is-4">
-          <router-link to="/Events">
+          <router-link :to="`/Events/${'other'}`">
             <div class="card is-shady">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -172,7 +140,8 @@ export default defineComponent({
           image: require("../assets/test.jpeg"),
         },
         {
-          image: require("../assets/logo.png"),
+          image:
+            "https://www.goldfishswimschool.com/images/blog/baby.2012090806449.jpg",
         },
       ],
     };

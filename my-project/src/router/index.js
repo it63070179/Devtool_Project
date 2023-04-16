@@ -26,7 +26,7 @@ const routes = [
     component: LoginUser
   },
   {
-    path: '/Events',
+    path: '/Events/:event',
     name: 'Events',
 
     component: EventsContainer
