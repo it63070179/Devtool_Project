@@ -1,11 +1,11 @@
 version: '3'
 
 services:
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    image: kmitl63070010/my-backend_image:1.0
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   image: kmitl63070010/my-backend_image:1.0
   frontend:
     build:
       context: ./my-project
