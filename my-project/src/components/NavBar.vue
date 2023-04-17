@@ -2,9 +2,6 @@
   <nav class="navbar is-primary">
     <div class="container">
       <div class="navbar-brand">
-        <a class="navbar-item">
-          <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma" />
-        </a>
         <a
           role="button"
           class="navbar-burger"
@@ -21,24 +18,30 @@
       <div class="navbar-menu" :class="{ 'is-active': isNavbarActive }">
         <div class="navbar-start">
           <a class="navbar-item">
-            <router-link to="/" style="color: #f7f9fb"> Home </router-link>
+            <router-link to="/" style="color: #f7f9fb; font-size:22px"> Home </router-link>
           </a>
           <a class="navbar-item">
-            <router-link to="/ChatUser" style="color: #f7f9fb">
+            <router-link to="/ChatUser" style="color: #f7f9fb; font-size:22px">
               chat</router-link
             >
           </a>
           <a class="navbar-item">
-            <router-link to="/NoteUser" style="color: #f7f9fb">
+            <router-link to="/NoteUser" style="color: #f7f9fb; font-size:22px">
               Note</router-link
             >
           </a>
           <a class="navbar-item">
-            <router-link to="/PostUser" style="color: #f7f9fb">
+            <router-link to="/PostUser" style="color: #f7f9fb; font-size:22px">
               Post</router-link
             >
           </a>
         </div>
+
+        <a class="navbar-item">
+          <router-link to="/">
+          <img src="../assets/baby_logo.png"/>
+          <span style="font-size:36px; font-weight:bold;">TCSon</span></router-link>
+        </a>
 
         <div class="navbar-end">
           <div class="navbar-item">
