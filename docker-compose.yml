@@ -4,6 +4,6 @@ services:
 
   frontend:
     build:
-      context: ./my-project/dist
+      context: ./my-project/dist/js
       dockerfile: Dockerfile
     image: kmitl63070010/my-frontend_image:1.0
